@@ -1,6 +1,6 @@
 {
   "name": "@gotpop-platform/package-logger",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "A package for logging",
   "main": "src/index.ts",
   "scripts": {
