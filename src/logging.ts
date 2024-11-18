@@ -75,19 +75,11 @@ export const logObject = (obj: Record<string, string>) => {
 
 type LoggerType = Array<{ msg: string; styles: StyleType[] }>;
 
-export const logger = (newLine = false, ...items: LoggerType) =>
+export const logger = (...items: LoggerType) =>
   console.log(
     items
-      .map(({ msg, styles }, index) => {
-        const withNewlines =
-          (index === 0 ? "\n" : "") +
-          msg +
-          (index === items.length - 1 ? "\n" : "");
-
-        return styles.reduce(
-          (text, style) => styleText(style, text),
-          newLine ? withNewlines : msg
-        );
-      })
+      .map(({ msg, styles }) =>
+        styles.reduce((text, style) => styleText(style, text), msg)
+      )
       .join(" ")
   );
